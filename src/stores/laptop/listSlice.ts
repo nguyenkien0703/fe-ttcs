@@ -1,12 +1,13 @@
 import {
     IGetAllLaptopQuery,
+    ILaptopList,
     ILaptopState,
     ListParamsFilter,
 } from '@/stores/laptop/type'
 import { EActionStatus, FetchError } from '@/stores/type'
 import { CONSTANT_EMPTY_STRING } from '@/constants/common'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IGetAllDataResponse, ILaptops } from '@/services/response.type'
+import { IGetAllDataResponse } from '@/services/response.type'
 import { AxiosError } from 'axios'
 import serviceLaptop from '@/services/laptop'
 
@@ -14,7 +15,7 @@ const initialState: ILaptopState = {
     status: EActionStatus.Idle,
     laptopList: [],
     page: 1,
-    limit: 12,
+    limit: 16,
     totalLaptopItem: 0,
     errorCode: '',
     errorMessage: '',
@@ -24,30 +25,28 @@ const initialState: ILaptopState = {
 }
 
 export const getAllLaptops = createAsyncThunk<
-    IGetAllDataResponse<ILaptops>,
+    IGetAllDataResponse<ILaptopList>,
     IGetAllLaptopQuery,
     {
         rejectValue: FetchError
     }
 >('laptop/getAllLaptops', async (param, { rejectWithValue }) => {
     try {
-
         const data = await serviceLaptop.getAllLaptop(param)
-        console.log('kien chinh ')
-        console.log('data adter kien chinh------',data)
-        const mapData = data.items.map((item)=> {
+
+        const mappedData = data.items.map((item, index) => {
             return {
                 id: item.id,
+                price: item.price,
+                brand: item.brand,
                 name: item.name,
-                brand: item.brand,image: item.image, price: item.price
+                image: item.image,
             }
-        }) as ILaptops[]
-        console.log('mapData----',mapData)
+        }) as unknown as ILaptopList[]
         return {
             ...data,
-            items: mapData
-        } as IGetAllDataResponse<ILaptops>
-
+            items: mappedData,
+        } as unknown as IGetAllDataResponse<ILaptopList>
     } catch (error) {
         const err = error as AxiosError
         const responseData: any = err?.response?.data
@@ -72,7 +71,6 @@ const laptopListSlice = createSlice({
                 state.status = EActionStatus.Pending
             })
             .addCase(getAllLaptops.fulfilled, (state, action) => {
-                console.log('action.payload----',action.payload)
                 state.status = EActionStatus.Succeeded
                 state.laptopList = action.payload?.items ?? []
                 state.totalLaptopItem = action?.payload?.meta?.totalItems ?? 0

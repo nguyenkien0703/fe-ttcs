@@ -2,12 +2,14 @@ import {
     IAccount,
     ILoginRequest,
     ILoginResponse,
+    ISignUpRequest,
     ISignUpResponse,
 } from '@/stores/auth/type'
 import { Cookies } from 'react-cookie'
 
 import { get, post } from './fetcher'
-import { ISignUp } from './request.type'
+import { IUseResponse } from '@/services/response.type'
+
 const cookies = new Cookies()
 
 const USER_INFO_STORAGE_KEY = 'usr_if'
@@ -71,11 +73,16 @@ const serviceUser = {
         )
         return response.data
     },
-    signUp: async (payload: ISignUp): Promise<ISignUpResponse> => {
+    signUp: async (payload: ISignUpRequest): Promise<ISignUpResponse> => {
         const response: { data: ISignUpResponse } = await post(
             '/auths/sign-up',
             payload,
         )
+
+        return response.data
+    },
+    getDetailUser: async (userId: number) => {
+        const response = await get<IUseResponse>(`users/${userId}`)
         return response.data
     },
 }

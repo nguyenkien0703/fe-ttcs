@@ -1,8 +1,6 @@
 import {
-    BookOutlined,
     ClusterOutlined,
     DashboardOutlined,
-    RadarChartOutlined,
     SettingOutlined,
     TeamOutlined,
     UserOutlined,

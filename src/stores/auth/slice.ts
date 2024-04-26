@@ -12,7 +12,7 @@ const initialState: IAuthState = {
     errorCode: '',
 }
 const authSlice = createSlice({
-    name: 'auth',
+    name: 'auth/login',
     initialState,
     reducers: {
         signOut: (state: IAuthState) => {

@@ -19,17 +19,13 @@ export interface IGetAllDataResponse<T> {
     items: T[]
     meta: IMeta
 }
-export interface ILaptopListResponse {
-    items: ILaptops[]
-    meta: IMeta
-}
 
-export interface ILaptops {
+export interface IListLaptopResponse {
     id: number
     name: string
     price: number
-    brand?: string
-    image?: string
+    brand: string | null
+    image: string | null
 }
 
 export interface ILaptopDetailResponse {
@@ -48,6 +44,7 @@ export interface ILaptopDetailResponse {
     material: string
     brand: string
     quantity: number
+    image: string
 }
 
 export interface ICommentLaptopResponse {
@@ -55,4 +52,20 @@ export interface ICommentLaptopResponse {
     content: string
     userId: number
     laptopId: number
+    updateAt: string
+}
+
+export interface IUseResponse {
+    id: number
+    name: string
+    address: string
+    phone: string
+    roleId: number
+}
+
+export interface ICommentResponse {
+    content: string
+    userId: number
+    laptopId: number
+    id: number
 }

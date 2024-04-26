@@ -28,6 +28,7 @@ export const useAuthLogin = (): AuthLoginType => {
     const resetStatusAction = useCallback(() => {
         dispatch(resetStatus())
     }, [dispatch])
+
     return {
         authState,
         loginAction,

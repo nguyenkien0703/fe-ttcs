@@ -35,14 +35,6 @@ const ListTitle = ({
 
     return (
         <LayoutTitle>
-            <Link href="/">
-                <img
-                    src="https://fptshop.com.vn/uploads/originals//fpt-shop-tuyen-nhieu-vi-tri-lam-viec-tai-cac-shop-ha-noi-id27942.png"
-                    alt="image_errors"
-                    style={{ width: '180px', height: '50px' }}
-                />
-            </Link>
-
             {pageName && (
                 <Title level={4} className="mb-0 font-medium">
                     {pageName}
@@ -59,17 +51,6 @@ const ListTitle = ({
                 />
                 {addButton}
                 {editButton}
-            </div>
-
-            <div className="flex gap-7">
-                {mounted && authState.isAuthenticated ? (
-                    <AccountInfo
-                        name="Stan Lee"
-                        avatar="/images/default-avatar.png"
-                    />
-                ) : (
-                    <h1>ban chua login</h1>
-                )}
             </div>
         </LayoutTitle>
     )

@@ -13,39 +13,39 @@ const AccountInfo = ({ avatar }: { name: string; avatar: string }) => {
     }
 
     const items: MenuProps['items'] = [
-        {
-            key: '0',
-            label: (
-                <Link
-                    className="py-[5px] text-sm leading-[22px]"
-                    rel="noopener noreferrer"
-                    href="/dashboard"
-                >
-                    DASHBOARD
-                </Link>
-            ),
-        },
-        {
-            key: '1',
-            label: (
-                <Link
-                    className="py-[5px] text-sm  leading-[22px]"
-                    rel="noopener noreferrer"
-                    href="/profile"
-                >
-                    MY_PROFILE
-                </Link>
-            ),
-        },
+        // {
+        //     key: '0',
+        //     label: (
+        //         <Link
+        //             className="py-[5px] text-sm leading-[22px]"
+        //             rel="noopener noreferrer"
+        //             href="/dashboard"
+        //         >
+        //             DASHBOARD
+        //         </Link>
+        //     ),
+        // },
+        // {
+        //     key: '1',
+        //     label: (
+        //         <Link
+        //             className="py-[5px] text-sm  leading-[22px]"
+        //             rel="noopener noreferrer"
+        //             href="/profile"
+        //         >
+        //             MY_PROFILE
+        //         </Link>
+        //     ),
+        // },
         {
             key: '2',
             label: (
                 <Link
                     className="py-[5px] text-sm  leading-[22px]"
                     rel="noopener noreferrer"
-                    href="/change-user-password"
+                    href="/card"
                 >
-                    CHANGE_PASSWORD
+                    Card
                 </Link>
             ),
         },
@@ -59,7 +59,7 @@ const AccountInfo = ({ avatar }: { name: string; avatar: string }) => {
                         await new Promise((resolve) => setTimeout(resolve, 500))
                     }}
                 >
-                    LOGOUT
+                    Logout
                 </div>
             ),
         },
@@ -83,7 +83,7 @@ const AccountInfo = ({ avatar }: { name: string; avatar: string }) => {
                         className="h-8 w-8 rounded-full"
                     />
                     <Text className="text-sm leading-[22px] text-white">
-                        {authState.userData?.username ?? 'Unknow'}
+                        {authState.userData?.name ?? 'Unknow'}
                     </Text>
                 </div>
                 <DownOutlined className="h-[10px] w-[10px] text-white" />

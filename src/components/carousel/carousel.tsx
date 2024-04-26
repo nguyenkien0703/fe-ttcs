@@ -22,7 +22,12 @@ const Carousel = () => {
             src: 'https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/cdn.fptshop.com.vn/Uploads/Originals/2020/4/5/637216741707634874_C1%20Laptop%20Gaming%20-%20Section1.png',
         },
     ]
-    return <UncontrolledCarousel items={imagesCarousel}></UncontrolledCarousel>
+    return (
+        <UncontrolledCarousel
+            items={imagesCarousel}
+            interval={5000}
+        ></UncontrolledCarousel>
+    )
 }
 
 export default Carousel

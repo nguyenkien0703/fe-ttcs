@@ -3,9 +3,25 @@ import { EActionStatus } from '@/stores/type'
 
 export interface IAccount {
     id: number
-    username: string
+    name: string
     email: string
     role: string
+}
+export interface IAccountSignUpResponse {
+    name: string
+    email: string
+    address: string
+    phone: string
+    roleId: number
+    id: number
+}
+
+export interface ISignUpRequest {
+    email: string
+    name: string
+    address: string
+    password: string
+    phone: string
 }
 
 export interface ILoginRequest {
@@ -20,7 +36,7 @@ export interface ILoginResponse {
 }
 
 export interface ISignUpResponse {
-    userData: IAccount
+    userData: IAccountSignUpResponse
 }
 export interface IAuthState {
     status: EActionStatus
@@ -32,4 +48,12 @@ export interface IAuthState {
 export interface ILoginRequest {
     email: string
     password: string
+}
+
+export interface ISignUpState {
+    status: EActionStatus
+    isRegistered: boolean | null
+    userData: IAccountSignUpResponse | null
+    errorMessage: string
+    errorCode: string
 }

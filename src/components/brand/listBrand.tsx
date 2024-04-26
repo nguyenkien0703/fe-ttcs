@@ -21,54 +21,56 @@ const ListBrand = () => {
                     >
                         Khách hàng đối tác
                     </h4>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/asus.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/acer.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/apple.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/lenovo.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/msi.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
-                    <span className="item">
-                        <a href="/">
-                            <img
-                                src="https://phucanhcdn.com/media/brand/dell.png"
-                                alt="Asus"
-                            />
-                        </a>
-                    </span>
+                    <div className="flex items-center   justify-between">
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/asus.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/acer.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/apple.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/lenovo.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/msi.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                        <span className="item">
+                            <a href="/">
+                                <img
+                                    src="https://phucanhcdn.com/media/brand/dell.png"
+                                    alt="Asus"
+                                />
+                            </a>
+                        </span>
+                    </div>
                 </Col>
                 <Col lg={2} xs={1}></Col>
             </Row>
