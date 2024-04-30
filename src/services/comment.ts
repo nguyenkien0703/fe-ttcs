@@ -1,26 +1,42 @@
-import { get, patch, post } from '@/services/fetcher'
+import { del, get, patch, post } from '@/services/fetcher'
 import {
+    ICommentDetailResponse,
     ICommentLaptopResponse,
     IGetAllDataResponse,
 } from '@/services/response.type'
-import { ICreateCommentPayload } from '@/services/request.type'
+import {
+    ICreateCommentPayload,
+    IUpdateCommentPayload,
+} from '@/services/request.type'
 
 const serviceComment = {
     getAllCommentOfLaptop: async (
         laptopId: number,
     ): Promise<IGetAllDataResponse<ICommentLaptopResponse>> => {
         const response: { data: IGetAllDataResponse<ICommentLaptopResponse> } =
-            await get(`/comments/${laptopId}`)
+            await get(`/comments/laptops/${laptopId}`)
         return response.data
     },
     createComment: async (payload: ICreateCommentPayload) => {
-        console.log('payload line 14---', payload)
         const response = await post<any>('/comments', payload)
-        console.log('response.data line 1666-----', response.data)
         return response.data
     },
-    updateComment: async (commentId: number) => {
-        const response = await patch<any>
+    getDetailComment: async (commentId: number) => {
+        const response = await get<ICommentDetailResponse>(
+            `/comments/${commentId}`,
+        )
+        return response.data
+    },
+    updateComment: async (
+        commentId: number,
+        payload: IUpdateCommentPayload,
+    ) => {
+        const response = await patch<any>(`/comments/${commentId}`, payload)
+        return response.data
+    },
+    deleteComment: async (commentId: number) => {
+        const response = await del<string>(`/comments/${commentId}`)
+        return response.data
     },
 }
 

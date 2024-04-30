@@ -18,7 +18,6 @@ export const login = createAsyncThunk<
 >('auth/login', async (loginData, { rejectWithValue }) => {
     try {
         const loginResponse: ILoginResponse = await serviceUser.login(loginData)
-        console.log('loginResponse.userData-----', loginResponse.userData)
         const { userData, accessToken, refreshToken } = loginResponse
         serviceUser.storeInfo(userData)
         serviceUser.storeAccessToken(accessToken)
@@ -41,7 +40,6 @@ export const signUp = createAsyncThunk<
 >('auth/register', async (signUpData, { rejectWithValue }) => {
     try {
         const signUpResponse = await serviceUser.signUp(signUpData)
-        console.log('signUpResponse----', signUpResponse)
         return signUpResponse
     } catch (error) {
         const err = error as AxiosError

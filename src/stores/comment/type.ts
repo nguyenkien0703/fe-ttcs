@@ -4,6 +4,9 @@ import exp from 'constants'
 export interface ICommentState extends FetchError, IGetAllCommentQuery {
     commentList: ICommentList[]
     status: EActionStatus
+    id?: number
+    openModalUpdateComment?: boolean
+    openModalDeleteComment?: boolean
 }
 
 export interface IGetAllCommentQuery {
@@ -34,4 +37,10 @@ export interface ICreateCommentState extends FetchError {
     commentData: ICommentResponse | null
 }
 
-export interface IUpdateComment {}
+export interface IUpdateCommentState extends FetchError {
+    id?: number
+    status: EActionStatus
+    openModalUpdateComment?: boolean
+    openModalDeleteComment?: boolean
+    // commentData: ICommentResponse | null
+}

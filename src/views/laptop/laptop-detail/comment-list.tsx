@@ -49,7 +49,7 @@ const CommentList = () => {
             setOpenModal(true)
         } else {
             setNewComment(EActionStatus.Pending)
-            console.log(values)
+            // console.log(values)
             try {
                 const res = await serviceComment.createComment({
                     content: values.comment,
@@ -61,7 +61,6 @@ const CommentList = () => {
                         description:
                             'Bạn đã bình luận cho máy tính này thành công.',
                     })
-
                     setNewComment(EActionStatus.Succeeded)
                     setWriteComment('')
                     form.resetFields()
@@ -70,7 +69,7 @@ const CommentList = () => {
                 if (error instanceof AxiosError) {
                     notification.error({
                         message: 'Lỗi',
-                        description: 'Bình luận thất bại.',
+                        description: error?.response?.data?.info?.message,
                     })
                 }
                 setNewComment(EActionStatus.Failed)
@@ -88,7 +87,6 @@ const CommentList = () => {
     const handleCancel = () => {
         setOpenModal(false)
     }
-
     return (
         <>
             <BoxArea title={'BÌNH LUẬN VỀ SẢN PHẨM'}>

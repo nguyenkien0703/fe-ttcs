@@ -48,3 +48,7 @@ export interface IDetailLaptopState {
     laptop?: ILaptopDetail
     error?: FetchError
 }
+
+
+
+

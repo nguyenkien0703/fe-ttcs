@@ -47,6 +47,13 @@ export interface ILaptopDetailResponse {
     image: string
 }
 
+export interface ICommentDetailResponse {
+    id: number
+    content: string
+    userId: number
+    laptopId: number
+}
+
 export interface ICommentLaptopResponse {
     id: number
     content: string

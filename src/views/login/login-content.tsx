@@ -15,15 +15,12 @@ const LoginContent = () => {
     const { openNotification, contextHolder } = useNotification()
     const router = useRouter()
     const onFinish = (values: any) => {
-        console.log('values line 1888888------', values)
         loginAction({ email: values.email, password: values.password })
     }
 
-    console.log('authState line 222-----', authState)
     useEffect(() => {
         ;(async () => {
             if (authState.status === EActionStatus.Succeeded) {
-                console.log('1111111111')
                 await openNotification({
                     message: 'Bạn đã đăng nhập thành công',
                     placement: 'topRight',

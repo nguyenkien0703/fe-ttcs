@@ -10,12 +10,10 @@ export const createComment = createAsyncThunk<
     { rejectValue: FetchError }
 >('comment/createComment', async (commentData, { rejectWithValue }) => {
     try {
-        console.log('commentData line 14---', commentData)
         const commentResponse = await serviceComment.createComment({
             content: commentData.content,
             laptopId: commentData.laptopId,
         })
-        console.log('commentResponse line 15---', commentResponse)
         return commentResponse
     } catch (error) {
         const err = error as AxiosError

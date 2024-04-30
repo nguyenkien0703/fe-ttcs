@@ -13,3 +13,14 @@ export interface ICreateCommentPayload {
     laptopId: number
     content: string
 }
+
+export interface IUpdateCommentPayload {
+    content: string
+}
+
+
+
+
+
+
+

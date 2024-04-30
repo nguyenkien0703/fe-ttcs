@@ -1,9 +1,10 @@
 import { ICommentList, ICommentState } from '@/stores/comment/type'
 import { EActionStatus, FetchError } from '@/stores/type'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IGetAllDataResponse } from '@/services/response.type'
 import { AxiosError } from 'axios'
 import serviceComment from '@/services/comment'
+import moment from 'moment'
 
 const initialState: ICommentState = {
     status: EActionStatus.Idle,
@@ -12,6 +13,9 @@ const initialState: ICommentState = {
     errorMessage: '',
     page: 1,
     limit: 100,
+    id: 0,
+    openModalUpdateComment: false,
+    openModalDeleteComment: false,
 }
 
 export const getAllComments = createAsyncThunk<
@@ -27,7 +31,7 @@ export const getAllComments = createAsyncThunk<
                 laptopId: item.laptopId,
                 userId: item.userId,
                 content: item.content,
-                updateAt: item.updateAt,
+                updateAt: moment(item.updateAt).format('YYYY/MM/DD HH:mm:ss'),
             } as unknown as ICommentList[]
         })
         return {
@@ -47,7 +51,28 @@ export const getAllComments = createAsyncThunk<
 const commentLaptopSlice = createSlice({
     name: 'commentLaptopSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setOpenModalUpdateComment(
+            state,
+            action: PayloadAction<{ isOpenModalUpdateComment: boolean }>,
+        ) {
+            state.openModalUpdateComment =
+                action?.payload.isOpenModalUpdateComment
+        },
+        setOpenModalDeleteComment(
+            state,
+            action: PayloadAction<{ isOpenModalDeleteComment: boolean }>,
+        ) {
+            state.openModalDeleteComment =
+                action?.payload?.isOpenModalDeleteComment
+        },
+        setIdOpenModalUpdateOrDeleteComment(
+            state,
+            action: PayloadAction<{ id: number }>,
+        ) {
+            state.id = action?.payload.id
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllComments.pending, (state) => {
@@ -64,4 +89,10 @@ const commentLaptopSlice = createSlice({
             })
     },
 })
+
+export const {
+    setOpenModalUpdateComment,
+    setOpenModalDeleteComment,
+    setIdOpenModalUpdateOrDeleteComment,
+} = commentLaptopSlice.actions
 export default commentLaptopSlice.reducer
